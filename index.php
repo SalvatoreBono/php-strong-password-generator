@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-include "./functions.php"
+session_start();
+include "./functions.php";
 ?>
 
 <head>
@@ -38,9 +39,10 @@ include "./functions.php"
             <?php
             /* se diverso dal value 0 stampa */
             if ($passwordLen != 0) {
-            ?>
-                <div class="text-center pt-5">Password: <?php echo $passwordGenerator ?></div>
-            <?php
+                $_SESSION["password"] = $passwordGenerator;
+                /* devi essere reinderizzato a ./homePasswordGenerator.php */
+                header("Location: ./homePasswordGenerator.php");
+                die;
             }
             ?>
         </div>
